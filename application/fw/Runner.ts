@@ -7,7 +7,7 @@ class Runner {
     constructor(public app: express.Express) {
     }
 
-    set(setter: Function): Runner {
+    next(setter: Function): Runner {
         setter(this.app);
         return this;
     }

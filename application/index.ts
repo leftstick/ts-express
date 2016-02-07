@@ -8,8 +8,8 @@ import logic = require('./logic');
 var app = express();
 
 new Runner(app)
-    .set(env)
-    .set(logic);
+    .next(env)
+    .next(logic);
 
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
