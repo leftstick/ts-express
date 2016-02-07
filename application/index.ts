@@ -1,14 +1,15 @@
 'use strict';
 
 import express = require('express');
+import Runner = require('./fw/Runner');
 import env = require('./env');
+import logic = require('./logic');
+
 var app = express();
 
-env(app);
-
-app.get('/', function(req: express.Request, res: express.Response) {
-    res.send('hello world!');
-});
+new Runner(app)
+    .set(env)
+    .set(logic);
 
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
