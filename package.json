@@ -1,0 +1,35 @@
+{
+  "name": "ts-express",
+  "version": "1.0.0",
+  "description": "This is a TypeScript based express starter",
+  "main": "./application/index.js",
+  "scripts": {
+    "type": "tsd install --save --overwrite --resolve",
+    "build": "tsc",
+    "preinstall": "npm run type",
+    "prestart": "npm run build",
+    "start": "node ./application/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leftstick/ts-express.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "express"
+  ],
+  "author": "Howard.Zuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leftstick/ts-express/issues"
+  },
+  "engines": {
+    "node": ">=5.0"
+  },
+  "homepage": "https://github.com/leftstick/ts-express#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "just-promiseify": "^1.1.1",
+    "typescript": "^1.7.5"
+  }
+}
