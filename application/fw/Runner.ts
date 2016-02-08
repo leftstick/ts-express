@@ -1,13 +1,14 @@
 'use strict';
 
 import express = require('express');
+import Runnable = require('./Runnable');
 
 class Runner {
 
     constructor(public app: express.Express) {
     }
 
-    next(setter: Function): Runner {
+    next(setter: Runnable): Runner {
         setter(this.app);
         return this;
     }
