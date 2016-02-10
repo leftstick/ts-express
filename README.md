@@ -1,8 +1,6 @@
 ts-express
 ====================
 
-![][license-url]
-
 This is a TypeScript based express starter
 
 ## usage ##
@@ -29,5 +27,3 @@ npm start
 ## LICENSE ##
 
 [MIT License](https://raw.githubusercontent.com/leftstick/ts-express/master/LICENSE)
-
-[license-url]:https://img.shields.io/npm/l/ts-express.svg
