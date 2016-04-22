@@ -4,7 +4,7 @@
   "description": "This is a TypeScript based express starter",
   "main": "./application/index.js",
   "scripts": {
-    "type": "tsd install --save --overwrite --resolve",
+    "type": "tsd install express",
     "build": "tsc",
     "preinstall": "npm run type",
     "prestart": "npm run build",
@@ -31,6 +31,9 @@
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "just-promiseify": "^1.1.1",
-    "typescript": "^1.7.5"
+    "typescript": "^1.8.10"
+  },
+  "devDependencies": {
+    "tsd": "^0.6.5"
   }
 }
