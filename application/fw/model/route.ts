@@ -19,5 +19,5 @@ export interface Route {
 }
 
 export interface Controller {
-    (req: express.Request, res: express.Response): void;
+    (req: express.Request, res: express.Response): void | Promise<any>;
 }

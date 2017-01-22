@@ -1,4 +1,5 @@
 import * as express from 'express';
+import logger from '../logger';
 
 import { Base, Route } from '../model/route';
 
@@ -11,7 +12,17 @@ export function config(app: express.Express, things: Array<Base>) {
 function configEach(router: express.IRoute, routes: Array<Route>) {
     routes.forEach(route => {
         router[route.method](function (req: express.Request, res: express.Response) {
-            route.controller(req, res);
+            try {
+                const result = route.controller(req, res);
+                if (result['then']) {
+                    (<Promise<any>>result)
+                        .catch((e: Error) => {
+                            logger.error(`[RUNTIME_ASYNC] => ${e.stack || e}`);
+                        });
+                }
+            } catch (err) {
+                logger.error(`[RUNTIME] => ${err.stack || err}`);
+            }
         });
     });
 }
