@@ -26,7 +26,6 @@
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "jade": "^1.11.0",
     "mkdirp": "^0.5.1",
     "pug": "^2.0.0-beta6",
     "winston": "^2.3.1"

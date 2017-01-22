@@ -18,13 +18,17 @@ module.exports = {
     output: {
         path: resolve(__dirname, 'target'),
         filename: '[name].bundle.js',
-        libraryTarget: 'commonjs2'
+        libraryTarget: 'commonjs2',
+        devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+        devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
     target: 'node',
     externals: nodeModules,
     node: {
         __dirname: true
     },
+    debug: true,
+    devtool: 'source-map',
     resolve: {
         extensions: ['', '.ts', '.js']
     },
