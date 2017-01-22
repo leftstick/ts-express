@@ -1,8 +1,6 @@
 #npm
 node_modules/
+npm-debug.log
 
-#typings
-typings
-
-#js
-application/**/*.js
+#build
+target/

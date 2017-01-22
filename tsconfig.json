@@ -1,35 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": false,
-    "noLib": false
-  },
-  "buildOnSave": false,
-  "compileOnSave": false,
-  "exclude": [
-    "public",
-    "node_modules"
-  ],
-  "formatCodeOptions": {
-    "indentSize": 4,
-    "tabSize": 4,
-    "newLineCharacter": "\n",
-    "convertTabsToSpaces": true,
-    "insertSpaceAfterCommaDelimiter": true,
-    "insertSpaceAfterSemicolonInForStatements": true,
-    "insertSpaceBeforeAndAfterBinaryOperators": true,
-    "insertSpaceAfterKeywordsInControlFlowStatements": true,
-    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-    "placeOpenBraceOnNewLineForFunctions": false,
-    "placeOpenBraceOnNewLineForControlBlocks": false
-  },
-  "atom": {
-    "rewriteTsconfig": true,
-    "formatOnSave": true
-  }
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es2015"],
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "allowSyntheticDefaultImports": true
+    }
 }
