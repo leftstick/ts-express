@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "This is a TypeScript based express starter",
   "scripts": {
-    "prestart": "rm -rf target && webpack",
-    "start": "node target/app.bundle.js"
+    "devbuild": "rm -rf target && webpack",
+    "dev": "npm run devbuild && node target/app.bundle.js",
+    "distbuild": "rm -rf target && webpack --config webpack.config.prod.js",
+    "start": "NODE_ENV=production node target/app.bundle.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
     "tslint": "^4.3.1",
     "tslint-loader": "^3.3.0",
     "typescript": "^2.1.5",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-merge": "^2.4.0"
   }
 }

@@ -8,6 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
+            "preLaunchTask": "devbuild",
             "program": "${workspaceRoot}/application/index.ts",
             "cwd": "${workspaceRoot}",
             "outFiles": ["${workspaceRoot}/target/app.bundle.js"],
