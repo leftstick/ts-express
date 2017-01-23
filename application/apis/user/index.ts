@@ -9,11 +9,15 @@ export const user: Api = {
     routes: [{
         method: METHODS.GET,
         controller: async function (req: express.Request, res: express.Response) {
-            res.json({
-                name: 'Hanmeimei',
-                age: 90,
-                friends: ['Lilei']
-            });
+
+            setTimeout(function () {
+                res.json({
+                    name: 'Hanmeimei',
+                    age: 90,
+                    friends: ['Lilei']
+                });
+            }, 1500);
+
         }
     }]
 };

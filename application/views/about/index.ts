@@ -6,12 +6,12 @@ import { METHODS } from '../../fw/helper/server';
 
 import { BaseModel } from '../common/model/base';
 
-export const home: View = {
-    path: '/',
+export const about: View = {
+    path: '/about',
     routes: [{
         method: METHODS.GET,
         controller: async function (req: express.Request, res: express.Response) {
-            res.render('home/home', new BaseModel(req, res));
+            res.render('about/about', new BaseModel(req, res));
         }
     }]
 };
