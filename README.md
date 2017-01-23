@@ -1,9 +1,11 @@
 ts-express
 ====================
 
-This is a TypeScript based express starter
+This is a debugable TypeScript based express scaffold
 
-## usage ##
+![](https://raw.githubusercontent.com/leftstick/ts-express/master/docs/img/debug-screenshot.png)
+
+## Prerequisites ##
 
 ### Clone the repo ###
 
@@ -18,20 +20,19 @@ cd ts-express
 npm install
 ```
 
+## Quick Start ##
+
 ### Launch express server ###
 
+>The easiest way to launch a debugable server is using [vscode](http://code.visualstudio.com), just press `F5`
+
+Or, start dev server directly from terminal
+
 ```bash
-npm start
+npm run dev
 ```
 
-### How to add restful APIs? ###
-
-Check [user](https://github.com/leftstick/ts-express/tree/master/application/apis/user) as reference. The [Api](https://github.com/leftstick/ts-express/blob/master/application/fw/model/route.ts#L12-L14) shall be registered in [apis/apis.ts](https://github.com/leftstick/ts-express/blob/master/application/apis/apis.ts)
-
-
-### How to add restful Views? ###
-
-Check [home](https://github.com/leftstick/ts-express/tree/master/application/views/home) as reference. The [View](https://github.com/leftstick/ts-express/blob/master/application/fw/model/route.ts#L8-L10) shall be registered in [views/views.ts](https://github.com/leftstick/ts-express/blob/master/application/views/views.ts)
+For more information, see [Detailed Explanation](https://github.com/leftstick/ts-express/blob/master/docs/detailed.md)
 
 ## LICENSE ##
 
