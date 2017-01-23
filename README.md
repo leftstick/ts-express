@@ -32,6 +32,8 @@ Or, start dev server directly from terminal
 npm run dev
 ```
 
+>Now the website is available for you at [http://127.0.0.1:3000](http://127.0.0.1:3000)
+
 For more information, see [Detailed Explanation](https://github.com/leftstick/ts-express/blob/master/docs/detailed.md)
 
 ## LICENSE ##

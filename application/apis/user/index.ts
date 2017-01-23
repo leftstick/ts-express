@@ -8,7 +8,7 @@ export const user: Api = {
     path: '/user',
     routes: [{
         method: METHODS.GET,
-        controller: async function (req: express.Request, res: express.Response) {
+        controller: function (req: express.Request, res: express.Response) {
 
             setTimeout(function () {
                 res.json({
