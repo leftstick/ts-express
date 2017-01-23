@@ -25,18 +25,14 @@ module.exports = {
         __dirname: true
     },
     resolve: {
-        extensions: ['', '.ts', '.js']
+        extensions: ['.ts', '.js']
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts!tslint',
+                use: ['ts-loader', 'tslint-loader'],
                 exclude: /node_modules/
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
             }
         ]
     },

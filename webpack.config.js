@@ -6,6 +6,5 @@ module.exports = merge(commonConfig, {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
-    debug: true,
     devtool: 'source-map'
 });
