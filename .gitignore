@@ -4,7 +4,7 @@ npm-debug.log
 
 #build
 target/
-public/generated/js/
+public/generated/
 
 #log
 log/

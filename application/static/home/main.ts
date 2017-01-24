@@ -1,3 +1,4 @@
+import './main.css';
 
 const msg$ = <HTMLElement>document.querySelector('#msg');
 

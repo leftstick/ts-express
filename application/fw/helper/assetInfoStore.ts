@@ -1,14 +1,18 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const PUBLIC_PATH = '/generated/js/';
+import { isString, isArray } from '../helper/object';
+
+const PUBLIC_PATH = '/generated/';
 
 class AssetStore {
 
-    info: { [index: string]: string };
+    scripts: { [index: string]: string };
+    csss: { [index: string]: string };
 
     constructor() {
-        this.info = {};
+        this.scripts = {};
+        this.csss = {};
     }
 
     load(): Promise<void> {
@@ -16,21 +20,55 @@ class AssetStore {
             return Promise.resolve();
         }
         return new Promise<void>((resolve, reject) => {
-            fs.readFile(path.resolve(__dirname, '..', '..', '..', 'public', 'generated', 'js', 'stats.json'), 'utf8', (err, data) => {
+            fs.readFile(path.resolve(__dirname, '..', '..', '..', 'public', 'generated', 'stats.json'), 'utf8', (err, data) => {
                 if (err) {
                     return reject(err);
                 }
-                this.info = JSON.parse(data);
+                const asset = JSON.parse(data);
+                this.scripts = Object
+                    .keys(asset)
+                    .reduce((p, c) => {
+                        if (isString(asset[c]) && !(<String>asset[c]).endsWith('.js')) {
+                            return p;
+                        }
+                        if (isArray(asset[c]) && (<Array<String>>asset[c]).every(a => !a.endsWith('.js'))) {
+                            return p;
+                        }
+
+                        p[c] = isString(asset[c]) ? asset[c] : (<Array<String>>asset[c]).find(a => a.endsWith('.js'));
+                        return p;
+                    }, {});
+
+                this.csss = Object
+                    .keys(asset)
+                    .reduce((p, c) => {
+                        if (isString(asset[c]) && !(<String>asset[c]).endsWith('.css')) {
+                            return p;
+                        }
+                        if (isArray(asset[c]) && (<Array<String>>asset[c]).every(a => !a.endsWith('.css'))) {
+                            return p;
+                        }
+
+                        p[c] = isString(asset[c]) ? asset[c] : (<Array<String>>asset[c]).find(a => a.endsWith('.css'));
+                        return p;
+                    }, {});
                 resolve();
             });
         });
     }
 
-    get(pageId: string): string {
-        if (!this.info[pageId]) {
+    getScript(pageId: string): string {
+        if (!this.scripts[pageId]) {
             return `${PUBLIC_PATH}${pageId}.bundle.js`;
         }
-        return `${PUBLIC_PATH}${this.info[pageId]}`;
+        return `${PUBLIC_PATH}${this.scripts[pageId]}`;
+    }
+
+    getCss(pageId: string): string {
+        if (!this.csss[pageId]) {
+            return `${PUBLIC_PATH}${pageId}.css`;
+        }
+        return `${PUBLIC_PATH}${this.csss[pageId]}`;
     }
 }
 

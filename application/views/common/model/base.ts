@@ -6,13 +6,15 @@ export class BaseModel {
     route: RouteInfo;
     pretty: boolean;
     script: string = '';
+    css: string = '';
 
     constructor(req: express.Request, res: express.Response, public pageId: string) {
         this.route = {
             path: req.path
         };
         this.pretty = true;
-        this.script = assetStore.get(pageId);
+        this.script = assetStore.getScript(pageId);
+        this.css = assetStore.getCss(pageId);
     }
 }
 

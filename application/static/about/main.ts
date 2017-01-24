@@ -1,3 +1,4 @@
+import './main.css';
 
 document
     .querySelector('#api')
