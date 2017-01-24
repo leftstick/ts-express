@@ -9,12 +9,15 @@ module.exports = function(tsconfig) {
             rules: [
                 {
                     test: /\.ts$/,
-                    use: [{
-                        loader: 'ts-loader',
-                        options: {
-                            configFileName: tsconfig
-                        }
-                    }, 'tslint-loader'],
+                    use: [
+                        {
+                            loader: 'ts-loader',
+                            options: {
+                                configFileName: tsconfig
+                            }
+                        },
+                        'tslint-loader'
+                    ],
                     exclude: /node_modules/
                 }
             ]

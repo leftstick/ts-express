@@ -9,7 +9,7 @@ const nodeModules = {};
 readdirSync(resolve(__dirname, '..', 'node_modules'))
     .filter(x => ['.bin'].indexOf(x) === -1)
     .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs2 ' + mod;
+        nodeModules[mod] = 'commonjs ' + mod;
     });
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -36,7 +36,7 @@ function resolveOutput() {
     const base = {
         path: resolve(__dirname, '..', 'target'),
         filename: '[name].bundle.js',
-        libraryTarget: 'commonjs2'
+        libraryTarget: 'commonjs'
     };
     if (isProd) {
         return base;
