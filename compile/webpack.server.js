@@ -14,7 +14,7 @@ readdirSync(resolve(__dirname, '..', 'node_modules'))
 
 const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = merge(commonConfig, {
+module.exports = merge(commonConfig('tsconfig.json'), {
     entry: {
         app: resolve(__dirname, '..', 'application', 'index.ts')
     },
