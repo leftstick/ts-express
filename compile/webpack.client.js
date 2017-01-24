@@ -7,15 +7,22 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = merge(commonConfig('tsconfig.client.json'), {
     entry: {
+        about: resolve(__dirname, '..', 'application', 'static', 'about', 'main.ts'),
         home: resolve(__dirname, '..', 'application', 'static', 'home', 'main.ts')
     },
     output: {
         path: resolve(__dirname, '..', 'public', 'generated', 'js'),
-        filename: (isProd ? '[hash].' : '') + '[name].bundle.js'
+        filename: (isProd ? '[hash].' : '') + '[name].bundle.js',
+        publicPath: '/generated/js/'
     },
     target: 'web',
     devtool: isProd ? undefined : 'source-map',
     plugins: isProd ? [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'
