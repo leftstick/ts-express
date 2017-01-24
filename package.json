@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "This is a TypeScript based express starter",
   "scripts": {
-    "devbuild": "rm -rf target && webpack",
+    "devbuild": "rm -rf target && webpack --config ./compile/webpack.server.js",
     "dev": "npm run devbuild && node target/app.bundle.js",
-    "distbuild": "rm -rf target && webpack --config webpack.config.prod.js",
+    "distbuild": "rm -rf target && NODE_ENV=production webpack --config ./compile/webpack.server.js",
     "start": "NODE_ENV=production node target/app.bundle.js"
   },
   "repository": {
