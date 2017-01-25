@@ -12,27 +12,29 @@ readdirSync(resolve(__dirname, '..', 'node_modules'))
         nodeModules[mod] = 'commonjs ' + mod;
     });
 
-const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = merge(commonConfig('tsconfig.json'), {
-    entry: {
-        app: resolve(__dirname, '..', 'application', 'index.ts')
-    },
-    output: resolveOutput(),
-    target: 'node',
-    externals: nodeModules,
-    node: {
-        __dirname: true
-    },
-    devtool: isProd ? undefined : 'source-map',
-    plugins: isProd ? [new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"'
-        }
-    })] : []
-});
+module.exports = function(env = {}) {
+    const {isProd} = env;
+    return merge(commonConfig('tsconfig.json'), {
+        entry: {
+            app: resolve(__dirname, '..', 'application', 'index.ts')
+        },
+        output: resolveOutput(isProd),
+        target: 'node',
+        externals: nodeModules,
+        node: {
+            __dirname: true
+        },
+        devtool: isProd ? undefined : 'source-map',
+        plugins: isProd ? [new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        })] : []
+    });
+};
 
-function resolveOutput() {
+function resolveOutput(isProd) {
     const base = {
         path: resolve(__dirname, '..', 'target'),
         filename: '[name].bundle.js',

@@ -31,7 +31,7 @@ export function compile(app: express.Express): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         const webpack = require('webpack');
         const webpackMiddleware = require('webpack-dev-middleware');
-        const config = require('../../compile/webpack.client');
+        const config = require('../../compile/webpack.client')({ isProd: false });
         const compiler = webpack(config);
         const middleware = webpackMiddleware(compiler, {
             publicPath: config.output.publicPath
