@@ -27,31 +27,11 @@ class AssetStore {
                 const asset = JSON.parse(data);
                 this.scripts = Object
                     .keys(asset)
-                    .reduce((p, c) => {
-                        if (isString(asset[c]) && !(<String>asset[c]).endsWith('.js')) {
-                            return p;
-                        }
-                        if (isArray(asset[c]) && (<Array<String>>asset[c]).every(a => !a.endsWith('.js'))) {
-                            return p;
-                        }
-
-                        p[c] = isString(asset[c]) ? asset[c] : (<Array<String>>asset[c]).find(a => a.endsWith('.js'));
-                        return p;
-                    }, {});
+                    .reduce(resolveAssets('.js', asset), {});
 
                 this.csss = Object
                     .keys(asset)
-                    .reduce((p, c) => {
-                        if (isString(asset[c]) && !(<String>asset[c]).endsWith('.css')) {
-                            return p;
-                        }
-                        if (isArray(asset[c]) && (<Array<String>>asset[c]).every(a => !a.endsWith('.css'))) {
-                            return p;
-                        }
-
-                        p[c] = isString(asset[c]) ? asset[c] : (<Array<String>>asset[c]).find(a => a.endsWith('.css'));
-                        return p;
-                    }, {});
+                    .reduce(resolveAssets('.css', asset), {});
                 resolve();
             });
         });
@@ -73,3 +53,20 @@ class AssetStore {
 }
 
 export default new AssetStore();
+
+function resolveAssets(postfix: string, asset: Object): ((privous: { [index: string]: string }, current: string) => { [index: string]: string }) {
+
+    return function (p, c) {
+
+        if (isString(asset[c]) && !(<String>asset[c]).endsWith(postfix)) {
+            return p;
+        }
+        if (isArray(asset[c]) && (<Array<String>>asset[c]).every(a => !a.endsWith(postfix))) {
+            return p;
+        }
+
+        p[c] = isString(asset[c]) ? asset[c] : (<Array<String>>asset[c]).find(a => a.endsWith(postfix));
+
+        return p;
+    };
+}
