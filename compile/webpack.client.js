@@ -31,7 +31,7 @@ module.exports = function(env = {}) {
         },
         target: 'web',
         devtool: isProd ? undefined : 'source-map',
-        plugins: isProd ? [
+        plugins: (isProd ? [
             new ExtractTextPlugin({
                 filename: '[hash].[name].css',
                 disable: false,
@@ -46,21 +46,23 @@ module.exports = function(env = {}) {
                 'process.env': {
                     NODE_ENV: '"production"'
                 }
-            }),
-            function() {
-                this.plugin('done', function(stats) {
-                    require('fs').writeFileSync(
-                        resolve(__dirname, '..', 'public', 'generated', 'stats.json'),
-                        JSON.stringify(stats.toJson().assetsByChunkName, null, 4));
-                });
-            }
+            })
         ] : [
             new ExtractTextPlugin({
                 filename: '[name].css',
                 disable: false,
                 allChunks: true
             })
-        ]
+        ])
+            .concat([
+                function() {
+                    this.plugin('done', function(stats) {
+                        require('fs').writeFileSync(
+                            resolve(__dirname, '..', 'public', 'stats.json'),
+                            JSON.stringify(stats.toJson().assetsByChunkName, null, 4));
+                    });
+                }
+            ])
 
     });
 };

@@ -33,6 +33,13 @@ export function compile(app: express.Express): Promise<void> {
         const webpackMiddleware = require('webpack-dev-middleware');
         const config = require('../../compile/webpack.client')({ isProd: false });
         const compiler = webpack(config);
+        compiler.apply(function () {
+            this.plugin('done', function () {
+                setTimeout(function () {
+                    assetStore.load();
+                }, 1500);
+            });
+        });
         const middleware = webpackMiddleware(compiler, {
             publicPath: config.output.publicPath
         });

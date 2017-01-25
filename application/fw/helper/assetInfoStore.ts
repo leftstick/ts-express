@@ -16,13 +16,13 @@ class AssetStore {
     }
 
     load(): Promise<void> {
-        if (process.env.NODE_ENV !== 'production') {
-            return Promise.resolve();
-        }
         return new Promise<void>((resolve, reject) => {
-            fs.readFile(path.resolve(__dirname, '..', '..', '..', 'public', 'generated', 'stats.json'), 'utf8', (err, data) => {
+            fs.readFile(path.resolve(__dirname, '..', '..', '..', 'public', 'stats.json'), 'utf8', (err, data) => {
                 if (err) {
-                    return reject(err);
+                    if (process.env.NODE_ENV === 'production') {
+                        return reject(err);
+                    }
+                    return resolve();
                 }
                 const asset = JSON.parse(data);
                 this.scripts = Object
@@ -39,14 +39,14 @@ class AssetStore {
 
     getScript(pageId: string): string {
         if (!this.scripts[pageId]) {
-            return `${PUBLIC_PATH}${pageId}.bundle.js`;
+            return '';
         }
         return `${PUBLIC_PATH}${this.scripts[pageId]}`;
     }
 
     getCss(pageId: string): string {
         if (!this.csss[pageId]) {
-            return `${PUBLIC_PATH}${pageId}.css`;
+            return '';
         }
         return `${PUBLIC_PATH}${this.csss[pageId]}`;
     }
