@@ -14,7 +14,7 @@ export interface Api extends Base {
 };
 
 export interface Route {
-    method: string;
+    method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'options';
     controller: Controller;
 }
 

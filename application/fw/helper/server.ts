@@ -1,11 +1,18 @@
 
+export namespace METHODS {
 
-export const METHODS = {
-    GET: 'get',
-    POST: 'post',
-    PUT: 'put',
-    OPTIONS: 'options',
-    PATCH: 'patch',
-    HEAD: 'head',
-    DELETE: 'delete'
-};
+    export const GET = 'get';
+
+    export const POST = 'post';
+
+    export const PUT = 'put';
+
+    export const OPTIONS = 'options';
+
+    export const PATCH = 'patch';
+
+    export const HEAD = 'head';
+
+    export const DELETE = 'delete';
+
+}
