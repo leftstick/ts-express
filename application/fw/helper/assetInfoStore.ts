@@ -27,11 +27,11 @@ class AssetStore {
                 const asset = JSON.parse(data);
                 this.scripts = Object
                     .keys(asset)
-                    .reduce(resolveAssets('.js', asset), {});
+                    .reduce(resolveAssets<{ [index: string]: string }>('.js', asset), {});
 
                 this.csss = Object
                     .keys(asset)
-                    .reduce(resolveAssets('.css', asset), {});
+                    .reduce(resolveAssets<{ [index: string]: string }>('.css', asset), {});
                 resolve();
             });
         });
@@ -54,7 +54,7 @@ class AssetStore {
 
 export default new AssetStore();
 
-function resolveAssets(postfix: string, asset: Object): ((privous: { [index: string]: string }, current: string) => { [index: string]: string }) {
+function resolveAssets<T>(postfix: string, asset: Object): ((privous: T, current: string) => T) {
 
     return function (p, c) {
 
