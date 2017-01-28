@@ -2,7 +2,7 @@ import './main.css';
 
 document
     .querySelector('#api')
-    .addEventListener('click', e => {
+    .addEventListener('click', (e: Event) => {
         const $userarea = document.querySelector('#userarea');
 
         $userarea.innerHTML = 'Loading...';
@@ -17,4 +17,5 @@ document
                 }, 3000);
 
             });
+
     }, false);
