@@ -34,10 +34,12 @@ export function compile(app: express.Express): Promise<void> {
         const config = require('../../compile/webpack.client')({ isProd: false });
         const compiler = webpack(config);
         compiler.apply(function () {
-            this.plugin('done', function () {
-                setTimeout(function () {
-                    assetStore.load();
-                }, 1500);
+            this.plugin('done', function (stats: any) {
+                require('fs')
+                    .writeFileSync(
+                    require('path').resolve(__dirname, '..', '..', 'public', 'stats.json'),
+                    JSON.stringify(stats.toJson().assetsByChunkName, null, 4));
+                assetStore.load();
             });
         });
         const middleware = webpackMiddleware(compiler, {
@@ -53,5 +55,3 @@ export function compile(app: express.Express): Promise<void> {
 export function loadAssetInfo(): Promise<void> {
     return assetStore.load();
 }
-
-
