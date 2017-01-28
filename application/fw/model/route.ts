@@ -1,5 +1,7 @@
 import * as express from 'express';
 
+import { METHODS } from '../helper/server';
+
 export interface Base {
     path: string;
     routes: Array<Route>;
@@ -14,7 +16,7 @@ export interface Api extends Base {
 };
 
 export interface Route {
-    method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'options';
+    method: METHODS.GET | METHODS.POST | METHODS.PUT | METHODS.PATCH | METHODS.HEAD | METHODS.DELETE | METHODS.OPTIONS;
     controller: Controller;
 }
 
