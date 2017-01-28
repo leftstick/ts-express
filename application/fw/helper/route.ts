@@ -14,7 +14,7 @@ function configEach(router: express.IRoute, routes: Array<Route>) {
         router[route.method](function (req: express.Request, res: express.Response) {
             try {
                 const result = route.controller(req, res);
-                if (result && result['then']) {
+                if (result && result['catch']) {
                     (<Promise<any>>result)
                         .catch((e: Error) => {
                             logger.error(`[RUNTIME_ASYNC] => ${e.stack || e}`);
