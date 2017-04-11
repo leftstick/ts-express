@@ -22,8 +22,8 @@ module.exports = function(env = {}) {
             rules: [
                 {
                     test: /\.css$/,
-                    loader: ExtractTextPlugin.extract({
-                        loader: 'css-loader' + (isProd ? '?minimize=true' : '')
+                    use: ExtractTextPlugin.extract({
+                        use: 'css-loader' + (isProd ? '?minimize=true' : '')
                     }),
                     exclude: /node_modules/
                 }
