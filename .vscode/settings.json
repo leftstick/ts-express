@@ -2,5 +2,16 @@
 {
     "editor.formatOnSave": true,
     "eslint.enable": true,
-    "typescript.format.enable": true
+    "typescript.format.enable": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.js.map": true
+    }
 }

@@ -3,12 +3,15 @@ node_modules/
 npm-debug.log
 
 #build
-target/
+out/
 public/generated/
-public/stats.json
 
 #log
 log/
 
 #osx
 .DS_Store
+
+#typescript
+**/*.js
+**/*.js.map

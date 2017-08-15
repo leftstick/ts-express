@@ -7,22 +7,10 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "启动程序",
-            "preLaunchTask": "devbuild",
-            "program": "${workspaceRoot}/application/index.ts",
+            "name": "Launch Program",
+            "program": "${workspaceRoot}/server/index.js",
             "cwd": "${workspaceRoot}",
-            "outFiles": ["${workspaceRoot}/target/app.bundle.js"],
-            "sourceMaps": true,
-            "smartStep": true,
-            "stopOnEntry": false
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "附加到进程",
-            "port": 5858,
-            "outFiles": [],
-            "sourceMaps": true
+            "preLaunchTask": "devBuild"
         }
     ]
 }
