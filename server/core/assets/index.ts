@@ -12,8 +12,8 @@ const config = env();
 class AssetReader {
     private entryPoints: IEntryPoints = {};
 
-    setup(stats: webpack.Stats) {
-        Object.assign(this.entryPoints, stats.toJson().entrypoints);
+    setup(stats: webpack.Stats.ToJsonOptions) {
+        Object.assign(this.entryPoints, stats['entrypoints']);
 
         Object
             .keys(this.entryPoints)

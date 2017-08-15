@@ -5,6 +5,7 @@ npm-debug.log
 #build
 out/
 public/generated/
+public/stats.json
 
 #log
 log/

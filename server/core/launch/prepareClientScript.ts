@@ -16,7 +16,7 @@ export async function prepareClientScript(app: express.Express): Promise<void> {
     if (config.envname === 'production') {
         const newReadFile = promisify(readFile);
         const stats = await newReadFile(resolve(__dirname, '..', '..', '..', 'public', 'stats.json'), { encoding: 'utf-8' });
-        return assetInfo.setup(<webpack.Stats>JSON.parse(stats));
+        return assetInfo.setup(<webpack.Stats.ToJsonOptions>JSON.parse(stats));
     }
 
     const webpackConfig = await prepareConfig(config);
@@ -25,7 +25,7 @@ export async function prepareClientScript(app: express.Express): Promise<void> {
 
     compiler.apply(function () {
         this.plugin('done', (stats: webpack.Stats) => {
-            assetInfo.setup(stats);
+            assetInfo.setup(stats.toJson());
         });
 
         const middleware = webpackMiddleware(compiler, {

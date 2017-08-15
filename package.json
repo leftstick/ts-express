@@ -5,9 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "devbuild": "tsc --sourceMap",
-    "distbuild": "tsc -p server",
+    "distbuild": "tsc && NODE_ENV=production node build/clientbuild",
     "dev": "npm run devbuild && node server/index",
-    "dist": "npm run distbuild && tsc -p build && NODE_ENV=production node build/dist"
+    "start": "NODE_ENV=production node server/index"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "@types/del": "^3.0.0",
     "@types/express": "^4.0.36",
     "@types/mkdirp": "^0.5.0",
     "@types/nunjucks": "0.0.32",
@@ -41,6 +42,7 @@
     "@types/webpack-dev-middleware": "^1.9.2",
     "@types/winston": "^2.3.4",
     "css-loader": "^0.28.4",
+    "del": "^3.0.0",
     "ts-loader": "^2.3.2",
     "tslint": "^5.6.0",
     "tslint-loader": "^3.5.3",
