@@ -5,7 +5,7 @@ import { promisify } from 'util';
 import { readdir } from 'fs';
 import { resolve } from 'path';
 
-import { IEnvironment } from '../server/model/core/IEnvironment';
+import { IEnvironment } from '../environment/IEnvironment';
 
 const CLIENT_PATH = resolve(__dirname, '..', 'client');
 

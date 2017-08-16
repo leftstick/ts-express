@@ -1,6 +1,6 @@
 import * as webpack from 'webpack';
 
-import { env } from '../environment';
+import { env } from '../../../environment';
 
 export interface IEntryPoints {
     [name: string]: ({ assets: Array<string> });

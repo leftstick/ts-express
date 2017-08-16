@@ -1,8 +1,10 @@
+import { env, readCliArgs } from '../environment';
+process.env.NODE_ENV = readCliArgs('--env', 'dev');
 import * as webpack from 'webpack';
 import * as del from 'del';
 import * as path from 'path';
 import { prepareConfig } from './webpack.config';
-import { env } from '../server/core/environment';
+
 
 del([path.resolve(__dirname, '..', 'public', 'generated')])
     .then(() => {

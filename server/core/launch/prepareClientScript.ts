@@ -7,7 +7,7 @@ import { readFile } from 'fs';
 
 import { prepareConfig } from '../../../build/webpack.config';
 
-import { env } from '../environment';
+import { env } from '../../../environment';
 import { assetInfo } from '../assets';
 
 const config = env();

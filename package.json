@@ -5,9 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "devbuild": "tsc --sourceMap",
-    "distbuild": "tsc && NODE_ENV=production node build/clientbuild",
+    "distbuild": "tsc && node build/clientbuild --env production",
     "dev": "npm run devbuild && node server/index",
-    "start": "NODE_ENV=production node server/index"
+    "start": "node server/index --env production"
   },
   "repository": {
     "type": "git",

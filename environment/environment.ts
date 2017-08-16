@@ -1,4 +1,4 @@
-import { IEnvironment } from '../../model/core/IEnvironment';
+import { IEnvironment } from './IEnvironment';
 
 export const env: IEnvironment = {
     envname: 'dev',

@@ -1,6 +1,8 @@
 import * as express from 'express';
 
-import { env } from './core/environment';
+import { env, readCliArgs } from '../environment';
+
+process.env.NODE_ENV = readCliArgs('--env', 'dev');
 
 import { setupExpressConfig } from './core/expressconfig';
 import { setupRoutes } from './core/launch/collectRoutes';
