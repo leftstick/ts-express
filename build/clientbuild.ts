@@ -11,9 +11,15 @@ del([path.resolve(__dirname, '..', 'public', 'generated')])
         return prepareConfig(env());
     })
     .then((webpackConfig: webpack.Configuration) => {
-        webpack(webpackConfig, (err) => {
+        webpack(webpackConfig, (err, stats: webpack.Stats) => {
             if (err) {
-                console.error(err);
+                return console.error(err);
+            }
+            console.log(stats.toString({
+                colors: true
+            }));
+            if (!stats.hasErrors()) {
+                console.log('\nClient build successfully~!!!');
             }
         });
     });
