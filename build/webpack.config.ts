@@ -33,10 +33,12 @@ async function getEntries() {
 
     const files = await newReaddir(CLIENT_PATH);
 
-    return files.reduce((p, c) => {
-        p[c] = resolve(CLIENT_PATH, c, 'index.ts');
-        return p;
-    }, {});
+    return files
+        .filter(f => !f.endsWith('.json'))
+        .reduce((p, c) => {
+            p[c] = resolve(CLIENT_PATH, c, 'index.ts');
+            return p;
+        }, {});
 }
 
 function getOutput(env): webpack.Output {
@@ -65,7 +67,7 @@ function getRules(env) {
             {
                 loader: 'ts-loader',
                 options: {
-                    configFileName: 'tsconfig.client.json'
+                    configFileName: resolve(__dirname, '..', 'client', 'tsconfig.client.json')
                 }
             },
             {
