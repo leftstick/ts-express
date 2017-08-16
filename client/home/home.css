@@ -1,4 +1,59 @@
 
-.name {
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landscape {
+    width: 650px;
+}
+
+.landscape_logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.landscape_logo .landscape_logo_title {
+    font-size: 90px;
+}
+
+.landscape_title {
+    font-family: Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+    color: #526488;
+    font-weight: 300;
+    font-size: 35px;
+    margin: 5px 0 5px 0;
+}
+
+.landscape_github {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.github_button {
+    display: inline-block;
+    color: #fff;
+    border-color: #35495e;
+    background-color: #35495e;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 42px;
+    border-radius: 3px;
+    text-decoration: none;
 }
