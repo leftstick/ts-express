@@ -63,7 +63,10 @@ function getRules(env) {
         test: /\.ts$/,
         use: [
             {
-                loader: 'ts-loader'
+                loader: 'ts-loader',
+                options: {
+                    configFileName: 'tsconfig.client.json'
+                }
             },
             {
                 loader: 'tslint-loader',
