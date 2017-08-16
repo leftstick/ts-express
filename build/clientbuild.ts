@@ -16,7 +16,8 @@ del([path.resolve(__dirname, '..', 'public', 'generated')])
                 return console.error(err);
             }
             console.log(stats.toString({
-                colors: true
+                colors: true,
+                modules: false
             }));
             if (!stats.hasErrors()) {
                 console.log('\nClient build successfully~!!!');
